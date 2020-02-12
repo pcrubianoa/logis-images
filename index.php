@@ -44,21 +44,32 @@ foreach ($_FILES as $key => $value) {
 
 
 //API URL
-$url = 'https://35.231.168.139/logis-images/receiver.php';
 
-$data = array("name" => "Hagrid", "age" => "36");
-$data_string = json_encode($data);
 
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-		'Content-Type: application/json',
-		'Content-Length: ' . strlen($data_string))
-);
+function file_post_contents($url, $data, $username = null, $password = null)
+{
+	$postdata = http_build_query($data);
+	
+	$opts = array('http' =>
+		array(
+			'method'  => 'POST',
+			'header'  => 'Content-type: application/x-www-form-urlencoded',
+			'content' => $postdata
+		)
+	);
+	
+	if($username && $password)
+	{
+		$opts['http']['header'] = ("Authorization: Basic " . base64_encode("$username:$password"));
+	}
+	
+	$context = stream_context_create($opts);
+	return file_get_contents($url, false, $context);
+}
 
-$result = curl_exec($ch);
+$url = 'http://35.231.168.139/logis-images/receiver.php';
+file_post_contents($url,$_FILES);
+
 echo "ok";
 /*
 $ch = curl_init();
