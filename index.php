@@ -46,4 +46,49 @@ echo "<h1>Debugging</h1>";
 echo "<pre>";
 print_r($_FILES);
 
+//API URL
+$url = 'http://35.231.168.139/logis-images/receiver.php';
+
+//create a new cURL resource
+$ch = curl_init($url);
+
+//setup request to send json via POST
+$data = array(
+	'username' => 'codexworld',
+	'password' => '123456'
+);
+$payload = json_encode(array("user" => $data));
+
+//attach encoded JSON string to the POST fields
+curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+//set the content type to application/json
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
+//return response instead of outputting
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+//execute the POST request
+$result = curl_exec($ch);
+
+//close cURL resource
+curl_close($ch);
+
+/*
+$ch = curl_init();
+//curl_setopt($ch, CURLOPT_URL, "https://logis.com.co/api/web/formulario_sorteo.php?empresa=dev");
+curl_setopt($ch, CURLOPT_URL, "http://35.231.168.139/logis-images/receiver.php");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
+curl_setopt($ch, CURLOPT_HTTPHEADER,
+	array(
+		"Accept: application/json"
+	));
+
+$result = curl_exec ($ch);
+$res = json_decode($result);
+return $res;
+*/
+
 ?>
