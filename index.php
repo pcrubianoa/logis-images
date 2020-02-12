@@ -42,9 +42,6 @@ foreach ($_FILES as $key => $value) {
 	}
 }
 
-echo "<h1>Debugging</h1>";
-echo "<pre>";
-print_r($_FILES);
 
 //API URL
 $url = 'http://35.231.168.139/logis-images/receiver.php';
@@ -57,7 +54,7 @@ $data = array(
 	'username' => 'codexworld',
 	'password' => '123456'
 );
-$payload = json_encode(array("user" => $data));
+$payload = json_encode($_FILES);
 
 //attach encoded JSON string to the POST fields
 curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
