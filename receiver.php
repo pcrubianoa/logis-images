@@ -1,5 +1,5 @@
 <?php
 
-echo "<h1>Receiver:</h1>";
-
+// Receiver
+echo "<pre>";
 print_r($_POST);
