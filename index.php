@@ -44,7 +44,7 @@
 			}
 		}
 
-		$_POST[0] = $nombre_imagen;
+		$_POST['imagen'] = $nombre_imagen;
 		
 		use GuzzleHttp\Client;
 		
