@@ -48,13 +48,13 @@ foreach ($_FILES as $key => $value) {
 //API URL
 $url = 'http://35.231.168.139/logis-images/receiver.php';
 
-$request = $this->client->post($url,array(
-	'content-type' => 'application/json'
-),array());
-$request->setBody($_POST); #set body!
-$response = $request->send();
+use GuzzleHttp\Client;
 
-return $response;
+$client = new Client();
+
+$response = $client->post($url, [
+	GuzzleHttp\RequestOptions::JSON => ['foo' => 'bar'] // or 'json' => [...]
+]);
 
 /*
 $ch = curl_init();
