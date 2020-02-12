@@ -42,33 +42,37 @@ foreach ($_FILES as $key => $value) {
 	}
 }
 
+echo "<h1>Debugging</h1>";
+echo "<pre>";
+print_r($_FILES);
 
 //API URL
-
-
-function file_post_contents($url, $data, $username = null, $password = null)
-{
-	$postdata = http_build_query($data);
-	
-	$opts = array('http' =>
-		array(
-			'method'  => 'POST',
-			'header'  => 'Content-type: application/x-www-form-urlencoded',
-			'content' => $postdata
-		)
-	);
-	
-	if($username && $password)
-	{
-		$opts['http']['header'] = ("Authorization: Basic " . base64_encode("$username:$password"));
-	}
-	
-	$context = stream_context_create($opts);
-	return file_get_contents($url, false, $context);
-}
-
 $url = 'http://35.231.168.139/logis-images/receiver.php';
-$data = file_post_contents($url,$_FILES);
+
+//create a new cURL resource
+$ch = curl_init($url);
+
+//setup request to send json via POST
+$data = array(
+	'username' => 'codexworld',
+	'password' => '123456'
+);
+$payload = json_encode(array("user" => $data));
+
+//attach encoded JSON string to the POST fields
+curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+//set the content type to application/json
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
+//return response instead of outputting
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+//execute the POST request
+$result = curl_exec($ch);
+
+//close cURL resource
+curl_close($ch);
 
 /*
 $ch = curl_init();
