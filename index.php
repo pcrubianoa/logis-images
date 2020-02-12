@@ -54,7 +54,7 @@ $data = array(
 	'username' => 'codexworld',
 	'password' => '123456'
 );
-$payload = json_encode($_FILES);
+$payload = json_encode(array("user" => $data));
 
 //attach encoded JSON string to the POST fields
 curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
