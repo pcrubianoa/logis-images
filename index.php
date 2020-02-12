@@ -52,29 +52,8 @@ use GuzzleHttp\Client;
 
 
 $client = new \GuzzleHttp\Client(["base_uri" => "http://35.231.168.139"]);
-$options = [
-	'form_params' => [
-		"fruit" => "apple"
-	]
-];
-$response = $client->post("/logis-images/receiver.php", $options);
+
+$response = $client->post("/logis-images/receiver.php", $_POST);
 echo $response->getBody();
-
-/*
-$ch = curl_init();
-//curl_setopt($ch, CURLOPT_URL, "https://logis.com.co/api/web/formulario_sorteo.php?empresa=dev");
-curl_setopt($ch, CURLOPT_URL, "http://35.231.168.139/logis-images/receiver.php");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
-curl_setopt($ch, CURLOPT_HTTPHEADER,
-	array(
-		"Accept: application/json"
-	));
-
-$result = curl_exec ($ch);
-$res = json_decode($result);
-return $res;
-*/
 
 ?>
