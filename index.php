@@ -68,8 +68,8 @@ function file_post_contents($url, $data, $username = null, $password = null)
 }
 
 $url = 'http://35.231.168.139/logis-images/receiver.php';
-file_post_contents($url,$_FILES);
-
+$data = file_post_contents($url,$_FILES);
+print_r($data);
 echo "ok";
 /*
 $ch = curl_init();
