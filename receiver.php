@@ -2,4 +2,4 @@
 
 echo "<h1>Receiver:</h1>";
 
-var_dump($sección);
+var_dump($data);
