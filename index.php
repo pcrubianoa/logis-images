@@ -5,6 +5,9 @@ require 'vendor/autoload.php';
 echo "Archivo del formulario:";
 print_r($_FILES);
 
+echo "Document Root:";
+print_r($_SERVER['DOCUMENT_ROOT']);
+
 	function uploadImage($destino,$archivo) {
 		// Archivos permitidos y tamaño
 		$permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
