@@ -44,7 +44,7 @@ foreach ($_FILES as $key => $value) {
 
 
 //API URL
-$url = 'http://35.231.168.139/logis-images/receiver.php';
+$url = 'https://35.231.168.139/logis-images/receiver.php';
 
 $data = array("name" => "Hagrid", "age" => "36");
 $data_string = json_encode($data);
