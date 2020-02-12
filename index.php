@@ -51,16 +51,9 @@
 		
 		$client = new \GuzzleHttp\Client(["base_uri" => "https://logis.com.co"]);
 		$options = [
-			'form_params' => [
-				$_POST,
-			]
+			'form_params' => $_POST,
 		];
-		$response = $client->post("/app/api/web/formulario_sorteo.php", [
-			'headers' => ['Content-Type' => 'application/json'],
-			'body' => json_encode([
-				$_POST,
-			])
-		]);
+		$response = $client->post("/app/api/web/formulario_sorteo.php", $options);
 		echo $response->getBody();
 
 ?>
