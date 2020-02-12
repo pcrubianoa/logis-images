@@ -38,7 +38,7 @@
 
 foreach ($_FILES as $key => $value) {
 	if ($value['name']!='') {
-		$nombre_imagen = uploadImage('/cityu',$value);
+		$nombre_imagen = uploadImage('/logis-images/cityu',$value);
 	}
 }
 	
