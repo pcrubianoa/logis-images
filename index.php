@@ -44,7 +44,6 @@ foreach ($_FILES as $key => $value) {
 	}
 }
 
-
 //API URL
 $url = 'http://35.231.168.139/logis-images/receiver.php';
 
