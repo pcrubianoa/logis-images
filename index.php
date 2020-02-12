@@ -70,7 +70,7 @@ function file_post_contents($url, $data, $username = null, $password = null)
 $url = 'http://35.231.168.139/logis-images/receiver.php';
 $data = file_post_contents($url,$_FILES);
 
-echo $data);
+echo $data;
 /*
 $ch = curl_init();
 //curl_setopt($ch, CURLOPT_URL, "https://logis.com.co/api/web/formulario_sorteo.php?empresa=dev");
