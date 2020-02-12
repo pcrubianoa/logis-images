@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 	function uploadImage($destino,$archivo) {
 		// Archivos permitidos y tamaño
 		$permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
@@ -42,37 +44,17 @@ foreach ($_FILES as $key => $value) {
 	}
 }
 
-echo "<h1>Debugging</h1>";
-echo "<pre>";
-print_r($_FILES);
 
 //API URL
 $url = 'http://35.231.168.139/logis-images/receiver.php';
 
-//create a new cURL resource
-$ch = curl_init($url);
+$request = $this->client->post($url,array(
+	'content-type' => 'application/json'
+),array());
+$request->setBody($_POST); #set body!
+$response = $request->send();
 
-//setup request to send json via POST
-$data = array(
-	'username' => 'codexworld',
-	'password' => '123456'
-);
-$payload = json_encode(array("user" => $data));
-
-//attach encoded JSON string to the POST fields
-curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-
-//set the content type to application/json
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
-//return response instead of outputting
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-//execute the POST request
-$result = curl_exec($ch);
-
-//close cURL resource
-curl_close($ch);
+return $response;
 
 /*
 $ch = curl_init();
