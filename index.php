@@ -35,8 +35,12 @@
 		echo $ruta;
 		unlink($ruta);
 	}
-	
-	uploadImage('cityu',$_FILES);
+
+foreach ($_FILES as $key => $value) {
+	if ($value['name']!='') {
+		$nombre_imagen = uploadImage('cityu',$value);
+	}
+}
 	
 	print_r($_FILES);
 	echo '<hr>';
