@@ -56,6 +56,8 @@ $response = $client->post($url, [
 	GuzzleHttp\RequestOptions::JSON => ['foo' => 'bar'] // or 'json' => [...]
 ]);
 
+return $response;
+
 /*
 $ch = curl_init();
 //curl_setopt($ch, CURLOPT_URL, "https://logis.com.co/api/web/formulario_sorteo.php?empresa=dev");
