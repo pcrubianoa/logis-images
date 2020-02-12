@@ -11,7 +11,7 @@ print_r($_SERVER['DOCUMENT_ROOT']);
 	function uploadImage($destino,$archivo) {
 		// Archivos permitidos y tamaño
 		$permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
-		$limite_kb = 1000000;
+		$limite_kb = 10000000;
 		
 		if (in_array($archivo['type'], $permitidos) && $archivo['size'] <= $limite_kb * 1024){
 			// Ruta de destino
