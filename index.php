@@ -45,8 +45,17 @@ foreach ($_FILES as $key => $value) {
 
 //API URL
 $url = 'http://35.231.168.139/logis-images/receiver.php';
-echo "ok";
 
+//create a new cURL resource
+$ch = curl_init($url);
+
+//setup request to send json via POST
+$data = array(
+	'username' => 'codexworld',
+	'password' => '123456'
+);
+
+echo "ok";
 /*
 $ch = curl_init();
 //curl_setopt($ch, CURLOPT_URL, "https://logis.com.co/api/web/formulario_sorteo.php?empresa=dev");
