@@ -50,13 +50,15 @@ $url = 'http://35.231.168.139/logis-images/receiver.php';
 
 use GuzzleHttp\Client;
 
-$client = new Client();
 
-$response = $client->post($url, [
-	GuzzleHttp\RequestOptions::JSON => ['foo' => 'bar'] // or 'json' => [...]
-]);
-
-return $response;
+$client = new \GuzzleHttp\Client(["base_uri" => "http://35.231.168.139"]);
+$options = [
+	'form_params' => [
+		"fruit" => "apple"
+	]
+];
+$response = $client->post("/logis-images/receiver.php", $options);
+echo $response->getBody();
 
 /*
 $ch = curl_init();
