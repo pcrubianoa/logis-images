@@ -56,6 +56,7 @@ $response = $client->post($url, [
 	GuzzleHttp\RequestOptions::JSON => ['foo' => 'bar'] // or 'json' => [...]
 ]);
 
+print_r($response);
 return $response;
 
 /*
