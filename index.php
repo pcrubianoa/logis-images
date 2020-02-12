@@ -51,7 +51,7 @@
 		
 		$client = new \GuzzleHttp\Client(["base_uri" => "https://logis.com.co"]);
 		$options = [
-			'json' => [
+			'form_params' => [
 				$_POST,
 			]
 		];
