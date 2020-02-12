@@ -44,18 +44,19 @@ foreach ($_FILES as $key => $value) {
 	}
 }
 
+
 //API URL
 $url = 'http://35.231.168.139/logis-images/receiver.php';
 
 use GuzzleHttp\Client;
 
-$client = new \GuzzleHttp\Client(["base_uri" => "http://logis.com.co"]);
+$client = new \GuzzleHttp\Client(["base_uri" => "http://35.231.168.139"]);
 $options = [
 	'form_params' => [
 		$_POST,
 	]
 ];
-$response = $client->post("/api/web/formulario_sorteo.php", $options);
+$response = $client->post("/logis-images/receiver.php", $options);
 echo $response->getBody();
 
 ?>
