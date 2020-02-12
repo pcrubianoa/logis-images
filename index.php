@@ -55,7 +55,12 @@
 				$_POST,
 			]
 		];
-		$response = $client->post("/app/api/web/formulario_sorteo.php", $options);
+		$response = $client->post("/app/api/web/formulario_sorteo.php", [
+			'headers' => ['Content-Type' => 'application/json'],
+			'body' => json_encode([
+				$_POST,
+			])
+		]);
 		echo $response->getBody();
 
 ?>
