@@ -49,6 +49,10 @@ curl_setopt($ch, CURLOPT_URL, "https://logis.com.co/api/web/formulario_sorteo.ph
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
+curl_setopt($ch, CURLOPT_HTTPHEADER,
+	array(
+		"Accept: application/json"
+	));
 
 $result = curl_exec ($ch);
 $res = json_decode($result);
