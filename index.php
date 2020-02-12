@@ -43,9 +43,8 @@
 				$nombre_imagen = uploadImage('/logis-images/cityu',$value);
 			}
 		}
-		
-		//API URL
-		$url = 'http://35.231.168.139/logis-images/receiver.php';
+
+		$_POST[0] = $nombre_imagen;
 		
 		use GuzzleHttp\Client;
 		
