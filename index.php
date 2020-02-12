@@ -52,8 +52,12 @@ use GuzzleHttp\Client;
 
 
 $client = new \GuzzleHttp\Client(["base_uri" => "http://35.231.168.139"]);
-
-$response = $client->post("/logis-images/receiver.php", $_POST);
+$options = [
+	'form_params' => [
+		$_POST,
+	]
+];
+$response = $client->post("/logis-images/receiver.php", $options);
 echo $response->getBody();
 
 ?>
