@@ -45,7 +45,6 @@
 		}
 
 		$_POST['imagen'] = $nombre_imagen;
-		print_r($_POST);
 		
 		use GuzzleHttp\Client;
 		
@@ -54,6 +53,8 @@
 			'form_params' => $_POST,
 		];
 		$response = $client->post("/app/api/web/formulario_sorteo.php?sorteo=cityu", $options);
-		echo $response->getBody();
+		//echo $response->getBody();
+	
+		header('Location: https://tusorteo.co/sorteo/afiliados/cityu/?mensaje');
 
 ?>
