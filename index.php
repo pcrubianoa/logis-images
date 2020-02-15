@@ -52,7 +52,7 @@
 		$options = [
 			'form_params' => $_POST,
 		];
-		$response = $client->post("/app/api/web/formulario_sorteo.php", $options);
+		$response = $client->post("/app/api/web/formulario_sorteo.php?sorteo=cityu", $options);
 		echo $response->getBody();
 
 ?>
