@@ -40,7 +40,7 @@
 		
 		foreach ($_FILES as $key => $value) {
 			if ($value['name']!='') {
-				$nombre_imagen = uploadImage('/logis-images/cityu',$value);
+				$nombre_imagen = uploadImage('/storage/cityu',$value);
 			}
 		}
 
